@@ -1,22 +1,23 @@
 <template>
-    <div :class="getTheme" style="height: 100%;">
+    <div :class="getTheme" class="h-100">
         <div class="container-fluid" id="weather-app">
-            <div class="app-container row" style="height: 100%; align-content: space-between;" >
+            <div class="row h-100 align-content-between">
                 <div class="col-10" id="logo">
-                    <a href="/" class="logo">Weather APP - test task</a>
+                    <a href="/" class="logo-img">Weather APP - test task</a>
                 </div>
-                <div class="col-10 col-lg-9" id="icon">
+                <div class="col-10 col-md-9" id="icon">
                     <div class="icon-container">
-                        <img alt="Vue logo" :src="require(`@/assets/${getIcon}.svg`)" class="icon">
+                        <img alt="Vue logo" :src="require(`@/assets/${getIcon}.svg`)">
                     </div>
                 </div>
-                <section class="col-20 col-lg-10 col-xl-9" id="weather">
-                    <div style="height: 100%; justify-content: center; display: flex; flex-direction: column;">
+                <section class="col-20 col-md-11" id="weather">
+                    <div class="h-100 d-flex flex-column justify-content-center">
                         <div class="city">
                             <span>Currently in </span> 
                             <searchselect 
                                 :val="cityFull"
-                                :data="cities" @select="citySelected"
+                                :data="cities" 
+                                @select="citySelected"
                                 ref="searchselect">
                             </searchselect>
                             <span>, it's</span>
@@ -32,11 +33,11 @@
                         </div>
                     </div>
                 </section>
-                <section class="col-20 col-lg-10" id="navigation">
+                <section class="col-20 col-md-10" id="navigation">
                     <ul class="list-group unit-picker">
                         <li v-for="unit in units" 
                             v-bind:key="unit.name"
-                            :class="activeUnit(unit.name)"
+                            :class="isActiveUnit(unit.name)"
                             class="list-group-item">
                             <unit :data="unit" @changed="unitChanged" />
                         </li>
@@ -73,7 +74,7 @@
                 weather: {},
                 value: '',
                 city: {},
-                unit: this.units[0] || { name: 'Celsius', active: true },
+                unit: this.units[0] || { name: 'Celsius', un: 'C' },
             }
         },
         computed: {
@@ -141,20 +142,16 @@
 
                 if(this.$refs.searchselect) this.$refs.searchselect.value = this.cityFull;
             },
-            citySelected(city, index) {
+            citySelected(city) {
                 this.city = city;
             },
             unitChanged(unit) {
                 this.unit = unit;
             },
-            activeUnit(name) {
+            isActiveUnit(name) {
                 return name == this.unit.name ? 'active' : ''
             }
         }
     }
 
 </script>
-
-<style lang="less" scoped>
-
-</style>

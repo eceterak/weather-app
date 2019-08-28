@@ -29,6 +29,14 @@
     cursor: pointer;
     margin-top: 2.25rem;
 
+    @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+        margin-left: -24px;
+    }
+
+    @media screen and (min-width: map-get($grid-breakpoints, 'xl')) {
+        margin-left: -31px;
+    }
+
     @include themify($themes) {
         border: 3px solid $color;
         color: $color;

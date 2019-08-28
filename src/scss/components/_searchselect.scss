@@ -19,7 +19,7 @@
             outline: none;
         }
 
-        @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+        @media screen and (min-width: map-get($grid-breakpoints, 'xl')) {
             font-size: 2.25rem;
         }
     }
@@ -47,7 +47,7 @@
                 padding: 0.5rem 1rem;
                 margin-bottom: -1px;
                 background-color: #fff;
-                color: #ccc;
+                color: rgb(153, 153, 153);
                 border: 1px solid rgba(0, 0, 0, 0.125);
 
                 &:hover {

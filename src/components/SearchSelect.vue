@@ -6,6 +6,7 @@
             v-model="value"
             placeholder="select city"
             @focus="showDropdown"
+            @blur="setValue"
             v-autowidth="{maxWidth: '960px', comfortZone: 0}">
         <div :class="dropdownClasses" class="search-select-dropdown">
             <ul>
@@ -51,23 +52,25 @@
         },
         methods: {
             showDropdown() {
-                this.value = '';
+                //this.value = '';
                 this.displayDropdown = true;
             },
             hideDropdown() {
                 this.displayDropdown = false;
             },
             select(option, index) {
-                this.$emit('select', option, index);
-
                 this.value = option.name + ', ' + option.country;
 
+                this.$emit('select', option, index);
+
                 this.hideDropdown();
+            },
+            setValue() {
+                this.$emit('blur', this.value);
             }
         }
     }
 </script>
-
 
 <style scoped lang="scss">
 

@@ -10,9 +10,11 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "oauth": "^0.9.15",
+    "textfit": "^2.4.0",
     "vue": "^2.6.10",
     "vue-clickaway": "^2.2.2",
-    "vue-input-autowidth": "^1.0.5"
+    "vue-input-autowidth": "^1.0.5",
+    "vue-resize-text": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
