@@ -1,0 +1,21 @@
+// Grid
+$grid-columns: 20;
+$gutter-width: 0;
+
+$grid-breakpoints: (
+    '': 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+// Colors
+$bg-color: #100e10;
+
+$themes: (
+    snowy: #00bbf8,
+    sunny: #ffdc37,
+    rainy: #5f04e9,
+    cloudly: #04e980
+);

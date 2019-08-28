@@ -1,0 +1,57 @@
+@mixin breakpoint($px) {
+    @if($px == 0) {
+        @content;
+    }
+    @else {
+        @media screen and (min-width: $px) {
+            @content;
+        }
+    }
+}
+
+@mixin generate-column($screen, $i) {
+    @if($screen != '') {
+        .col-#{$screen}-#{$i} {
+            @content;
+        }
+    }
+    @else {
+        .col-#{$i} {
+            @content;
+        }
+    }
+}
+
+@mixin generate-grid($columns, $screen, $px) {
+    // Those styles apply for each column.
+    @for $i from 1 through $columns {
+        @include generate-column($screen, $i) {
+            position: relative;
+            padding-left: $gutter-width / 2;
+            padding-right: $gutter-width / 2;
+            width: 100%;
+        }
+    }
+
+    // Add custom width for each screen.
+    @include breakpoint($px) {
+        @for $i from 1 through $columns {
+            @include generate-column($screen, $i) {
+                flex: 0 0 percentage(1 / ($grid-columns / $i));;
+                max-width:  percentage(1 / ($grid-columns / $i));
+            }
+        }
+    }
+}
+
+@mixin themify($themes: $themes) {
+    @each $theme, $color in $themes {
+        .theme-#{$theme} & {
+            $color: $color !global;
+            
+            @content;
+            
+            $color: null !global;
+        }
+    }
+}

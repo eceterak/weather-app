@@ -1,0 +1,63 @@
+.search-select {
+    position: relative;
+    display: inline-block;
+    
+    .search-select-input {
+        font-size: 1.44rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-style: italic;
+        color: #FFF;
+        background: transparent;
+        border: none;
+        font-weight: 800;
+        border-bottom: 1px dotted #ccc;
+        min-width: 100px;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        @media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+            font-size: 2.25rem;
+        }
+    }
+    
+    .search-select-dropdown {
+        position: absolute;
+        background: #FFF;
+        z-index: 101;
+        width: 100%;
+        font-size: 1.25rem;
+        min-width: 250px;
+
+        ul {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            padding-left: 0;
+            margin: 0;
+
+            li {
+                position: relative;
+                display: block;
+                padding: 0.5rem 1rem;
+                margin-bottom: -1px;
+                background-color: #fff;
+                color: #ccc;
+                border: 1px solid rgba(0, 0, 0, 0.125);
+
+                &:hover {
+                    @include themify($themes) {
+                        background-color: $color;
+                    } 
+                    color: #FFF;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
