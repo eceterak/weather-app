@@ -1497,6 +1497,11 @@ img {
   background-color: #04e980;
 }
 
+.btn-place:focus {
+  outline: none;
+  border: none;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   color: #FFF;
